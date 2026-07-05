@@ -8,7 +8,7 @@ class BankAccount {
     this.balance = balance;
     this.type = type.toLowerCase();
     this.isActive = true;
-    // this.accountNumber = this.generateAccountNumber();
+    this.accountNumber = this.generateAccountNumber();
     this.message = "";
 
     this.validateAccountType();
@@ -24,6 +24,11 @@ class BankAccount {
       return "Invalid account type";
     }
   }
+// Generate account number
+  generateAccountNumber() {
+    return Math.floor(Math.random() * 1000000000);
+  }
+
 }
 
 const user1 = new BankAccount("Mabas", 54000, "Savings");
