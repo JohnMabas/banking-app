@@ -45,9 +45,32 @@ class BankAccount {
     this.message = `${amount} deposited successfully.`;
   }
 
+
+   // Withdraw money
+  withdraw(amount) {
+    if (!this.isActive) {
+      this.message = "Account is inactive.";
+      return;
+    }
+
+    if (amount <= 0) {
+      this.message = "Invalid amount.";
+      return;
+    }
+
+    if (amount > this.balance) {
+      this.message = "Insufficient balance.";
+      return;
+    }
+
+    this.balance -= amount;
+    this.message = `${amount} withdrawn successfully.`;
+  }
+
 }
 
 const user1 = new BankAccount("Mabas", 54000, "Savings");
-user1.deposit(20000)
+// user1.deposit(20000)
+// user1.withdraw(10000)
 
 console.log(user1);
