@@ -120,11 +120,28 @@ class BankAccount {
     receiver.message = `Received ${amount} from ${this.name}.`;
   }
 
+  // Freeze account
+  freeze(adminID) {
+    if (adminID !== this.adminID) {
+      this.message = "Unauthorized.";
+      return;
+    }
+
+    this.isActive = false;
+    this.message = "Account has been frozen.";
+  }
+
+
 
 }
 
 const user1 = new BankAccount("Mabas", 54000, "Savings");
-// user1.deposit(20000)
+let user2 = new BankAccount('John', 10000, 'current')
+
+user1.deposit(20000)
+user2.deposit(30000)
 // user1.withdraw(10000)
+user1.transfer('John', 10000)
 
 console.log(user1);
+console.log(user2);
