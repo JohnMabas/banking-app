@@ -142,6 +142,17 @@ class BankAccount {
     this.message = "Account deactivated.";
   }
 
+   // Activate account
+  activate(adminID) {
+    if (adminID !== this.adminID) {
+      this.message = "Unauthorized.";
+      return;
+    }
+
+    this.isActive = true;
+    this.message = "Account activated.";
+  }
+
 
 
 
@@ -149,11 +160,14 @@ class BankAccount {
 
 const user1 = new BankAccount("Mabas", 54000, "Savings");
 let user2 = new BankAccount('John', 10000, 'current')
+let user3 = new BankAccount('Hope', 50000, 'current')
 
 user1.deposit(20000)
 user2.deposit(30000)
 // user1.withdraw(10000)
 user1.transfer('John', 10000)
+user3.freeze(100)
 
 console.log(user1);
 console.log(user2);
+console.log(user3);
