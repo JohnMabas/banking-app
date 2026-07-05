@@ -131,6 +131,18 @@ class BankAccount {
     this.message = "Account has been frozen.";
   }
 
+   // Deactivate account
+  deactivate(code) {
+    if (code !== this.adminID && code !== this.userCode) {
+      this.message = "Unauthorized.";
+      return;
+    }
+
+    this.isActive = false;
+    this.message = "Account deactivated.";
+  }
+
+
 
 
 }
